@@ -1,9 +1,10 @@
 var playerName = window.prompt("What is your robots's name?");
 var playerHealth = 100;
 var playerAttack = 10;
+var playerMoney = 10;
 
 //you can also log multiple values at once like this
-console.log(playerName, playerAttack, playerHealth);
+console.log(playerName, playerAttack, playerHealth, playerMoney);
 
 var enemyName = ("Roborto");
 var enemyHealth = 50;
@@ -12,6 +13,11 @@ var enemyAttack = 12;
 var fight = function(){
     //Alert players that we are starting th round
     window.alert("Welcome to Robot Gadiators!");
+
+    var promptfight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+    console.log(promptfight)
+    //if player choses to fight,then fight
+    if (promptfight === "fight" || promptfight === "FIGHT") {
 
     //Subtract the value of "playerAttack" from the value of "enemyHealth" and use that result to update the value in the "enemyHealth" value
     enemyHealth = enemyHealth-playerAttack;
@@ -40,6 +46,27 @@ var fight = function(){
     else (
         window.alert( playerName + " still has " + playerHealth + " health left.")
     )
-};
+    }
+    //if a player choses to skip
+    else if (promptfight == "skip" || promptfight === "SKIP"){
+        //confirm player wants to skip
+        var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+
+        //if yes (true) leave fight
+        if (confirmSkip) {
+            window.alert (playerName + " has decided to skip this fight. Goodbye!");
+            //subtract money from playerMoney for skiping
+            playerMoney = playerMoney -2;
+        }
+        // if no(false) ask question again by running fight() again
+        else{
+            fight();
+        }
+    }
+    else {
+        window.alert("You need to chose a valid option. Try again!");
+    }
+    }
+;
 
 fight();
