@@ -18,8 +18,10 @@ var enemyAttack = 12;
 
 
 var fight = function(enemyName){
+    //repeat and execue as long as the enemy robot is alive
+    while(enemyHealth > 0){
     //Alert players that we are starting th round
-    window.alert("Welcome to Robot Gadiators!");
+   
 
     for(var i = 0; i < enemyNames.length ; i++){
     }
@@ -41,6 +43,7 @@ var fight = function(enemyName){
     console.log(
         enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining"
            )
+    
     // check enemy's health
     if (enemyHealth <= 0) {
         window.alert(enemyName + " has died!");
@@ -77,8 +80,11 @@ var fight = function(enemyName){
         window.alert("You need to chose a valid option. Try again!");
     }
     }
-;
+;}
 for(var i = 0; i < enemyNames.length; i++){
-    fight(enemyNames [i]);
+    var pickedEnemyName = enemyNames[i];
+    enemyHealth = 50;
+    
+    fight(pickedEnemyName);
 }
 //fight();
